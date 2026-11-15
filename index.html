@@ -3,85 +3,152 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Web Development Portfolio</title>
-<meta name="description" content="웹사이트와 실시간 통역 서비스의 기술 케이스 스터디, 직접 써볼 수 있는 다국어 검색 데모를 담은 웹 개발 포트폴리오">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%277%27 fill=%27%232747E0%27/%3E%3C/svg%3E">
+<title>Web Portfolio</title>
+<meta name="description" content="디자인부터 개발, 운영까지 직접 맡은 웹사이트 작업과 직접 써볼 수 있는 데모를 모은 웹 포트폴리오">
+<meta property="og:title" content="Web Portfolio">
+<meta property="og:description" content="디자인부터 개발, 운영까지 직접 맡은 웹사이트 작업을 모았습니다.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://haildrop99-cyber.github.io/portfolio/img/daruon_hero.webp">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%277%27 fill=%27%23000%27/%3E%3Ccircle cx=%2716%27 cy=%2716%27 r=%276%27 fill=%27%23fff%27/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&family=Noto+Sans+KR:wght@400;500;700&family=Noto+Sans+Arabic:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Geist+Mono:wght@400;500&family=Noto+Sans+KR:wght@400;500;700&family=Noto+Sans+Arabic:wght@400;600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#F4F4F2; --card:#fff; --ink:#000; --sub:#5C5D63; --faint:#8C8D93; --line:#DCDCD8; --accent:#2747E0; --accent-soft:#E6EAFC;
+  --bg:#F4F4F2; --ink:#000; --sub:#5C5D63; --faint:#8C8D93; --line:#DCDCD8; --accent:#2B3BFF; --accent-soft:#E8EAFE;
   --lime:#D3E3B6; --green:#2E6B34; --navy:#0B1B4D; --sky:#A9BCF3; --red:#B3161C;
   --code-bg:#0E0F12; --code-ink:#D8DAE0; --code-dim:#7C808C;
-  --font:"Geist","Noto Sans KR","Noto Sans Arabic",-apple-system,sans-serif;
+  --font:"Archivo","Noto Sans KR","Noto Sans Arabic",-apple-system,sans-serif;
   --mono:"Geist Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --rule:rgba(0,0,0,.16); --mute:#5C5D63;
+  --ease:cubic-bezier(.2,.7,.2,1);
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{font-family:var(--font);background:var(--bg);color:var(--ink);line-height:1.65;font-size:16px;-webkit-font-smoothing:antialiased;word-break:keep-all}
+body{font-family:var(--font);background:#fff;color:var(--ink);line-height:1.65;font-size:16px;-webkit-font-smoothing:antialiased;word-break:keep-all}
 img{display:block;max-width:100%}
 a{color:inherit}
 button{font:inherit;color:inherit}
 :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
-.wrap{max-width:1280px;margin:0 auto;padding:0 40px}
+.wrap{max-width:1360px;margin:0 auto;padding:0 40px}
+.x{font-stretch:125%;font-weight:700;letter-spacing:-.04em;line-height:.96}
+.two>*,.demo-grid>*,.d-main>*,.arch>*,.split>*{min-width:0}
 
-/* top */
-.top{display:flex;justify-content:space-between;align-items:center;height:76px;font-size:14.5px}
-.top .me{font-weight:700;font-size:16px;letter-spacing:-.02em}
-.top .me small{font-weight:400;font-size:14px;color:var(--sub);margin-inline-start:10px;letter-spacing:0}
-.top nav{display:flex;gap:28px}
-.top nav a{text-decoration:none;color:var(--sub)}
-.top nav a:hover{color:var(--ink)}
+/* fixed header, inverts against whatever is behind it */
+.hd{position:fixed;inset:0 0 auto 0;z-index:40;display:flex;justify-content:space-between;align-items:center;padding:22px 40px;color:#fff;mix-blend-mode:difference;font-size:14.5px;pointer-events:none}
+.hd a{pointer-events:auto;color:#fff;text-decoration:none}
+.hd .brand{font-stretch:125%;font-weight:700;letter-spacing:-.02em;font-size:15px}
+.hd nav{display:flex;gap:28px}
+.hd nav a:hover{text-decoration:underline;text-underline-offset:5px}
 
-/* hero */
-.hero{padding:64px 0 110px}
-.hero h1{font-size:clamp(52px,9.6vw,152px);font-weight:700;line-height:.93;letter-spacing:-.065em}
-.hero h1 span{display:block}
-.hero h1 .i1{padding-inline-start:.9em;font-weight:400}
-.hero-lead{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:44px}
-.hero-lead p{font-size:18.5px;color:var(--sub);max-width:29em;letter-spacing:-.015em}
-.index{list-style:none;margin-top:76px;border-top:1.5px solid var(--ink)}
-.index a{display:grid;grid-template-columns:96px 1.3fr 1.2fr 1.5fr;gap:24px;align-items:center;padding:16px 0;border-bottom:1px solid var(--line);text-decoration:none}
-.index .th{width:96px;height:60px;border-radius:8px;overflow:hidden;background:#fff;border:1px solid var(--line)}
-.index .th img{width:100%;height:100%;object-fit:cover;object-position:top}
-.index b{font-size:clamp(20px,2.2vw,28px);font-weight:600;letter-spacing:-.04em}
-.index span{color:var(--sub);font-size:15px}
-.index .st{font-family:var(--mono);font-size:13px;color:var(--faint)}
-.index a:hover b{color:var(--accent)}
-.index li{opacity:0;transform:translateY(18px);animation:rise .8s cubic-bezier(.16,1,.3,1) forwards}
-.index li:nth-child(2){animation-delay:.07s}.index li:nth-child(3){animation-delay:.14s}.index li:nth-child(4){animation-delay:.21s}.index li:nth-child(5){animation-delay:.28s}
-@keyframes rise{to{opacity:1;transform:none}}
-.th-demo{display:grid;place-items:center;background:var(--accent-soft)!important;border-color:transparent!important}
-.th-demo i{display:block;width:62px;height:16px;border-radius:99px;background:#fff;border:1.5px solid var(--accent)}
+/* ── hero ── */
+.hero{position:relative;min-height:100vh;min-height:100svh;background:#000;color:#fff;overflow:hidden;display:flex;align-items:flex-end}
+.wall{position:absolute;inset:0}
+.wall-in{position:absolute;right:-7vw;top:50%;width:min(64vw,960px);height:170vh;display:grid;grid-template-columns:repeat(3,1fr);gap:18px;transform:translateY(-50%) perspective(1500px) rotateX(16deg) rotateY(-20deg) rotateZ(7deg)}
+.col{overflow:hidden}
+.track{animation:up 80s linear infinite;will-change:transform}
+.c2 .track{animation:down 100s linear infinite}
+.c3 .track{animation-duration:90s}
+.track img{width:100%;border-radius:12px;margin-bottom:18px}
+@keyframes up{to{transform:translateY(-50%)}}
+@keyframes down{from{transform:translateY(-50%)}to{transform:none}}
+.hero::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:
+  linear-gradient(90deg,#000 0,#000 26%,rgba(0,0,0,.55) 48%,rgba(0,0,0,0) 78%),
+  linear-gradient(#000 0,rgba(0,0,0,0) 20%,rgba(0,0,0,0) 76%,#000 100%)}
+.hero-txt{position:relative;z-index:2;width:100%;padding-top:140px;padding-bottom:64px}
+.hero h1{font-size:clamp(58px,min(10.4vw,20vh),176px)}
+.hero h1 span{display:block;overflow:hidden;padding-bottom:.06em}
+.hero h1 i{display:block;font-style:normal;transform:translateY(110%);animation:lift 1.1s var(--ease) forwards}
+.hero h1 span:nth-child(2) i{animation-delay:.1s}
+.hero h1 span:nth-child(3) i{animation-delay:.2s}
+@keyframes lift{to{transform:none}}
+.hero-foot{display:flex;align-items:flex-end;justify-content:space-between;gap:32px;flex-wrap:wrap;margin-top:44px;opacity:0;animation:fade .9s ease .55s forwards}
+@keyframes fade{to{opacity:1}}
+.hero-foot p{max-width:27em;font-size:17.5px;color:#BDBEC4;letter-spacing:-.01em}
+.pill{display:inline-flex;align-items:center;gap:10px;padding:15px 26px;border-radius:999px;background:#fff;color:#000;font-weight:600;font-size:15px;text-decoration:none;transition:background .2s,color .2s}
+.pill:hover{background:var(--accent);color:#fff}
 
-/* shared section pieces */
-.sec-h{font-size:clamp(46px,7vw,112px);font-weight:700;line-height:.95;letter-spacing:-.06em}
-.sub-h{font-size:clamp(26px,2.9vw,40px);font-weight:700;letter-spacing:-.045em;line-height:1.08}
-.ko{display:block;font-size:max(.24em,17px);letter-spacing:-.03em;font-weight:700;margin-top:22px;line-height:1.3}
-.p-head{display:grid;grid-template-columns:1.4fr 1fr;gap:60px;align-items:end}
-.p-head p{font-size:17.5px;letter-spacing:-.02em;max-width:30em}
-.visit{display:inline-flex;align-items:center;gap:12px;padding:12px 20px 12px 22px;border-radius:999px;background:var(--ink);color:#fff;text-decoration:none;font-weight:600;font-size:15px;grid-column:2;justify-self:start;margin-top:-30px}
+/* ── intro ── */
+.intro{padding:150px 0 130px}
+.state{font-size:clamp(26px,3.5vw,52px);font-weight:500;line-height:1.32;letter-spacing:-.035em;max-width:21em}
+.state span{color:var(--faint)}
+.scope{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;margin-top:96px}
+.scope h3{font-size:15px;font-stretch:125%;font-weight:700;letter-spacing:-.01em;padding-top:16px;border-top:1.5px solid #000;margin-bottom:12px}
+.scope ul{list-style:none;font-size:15px;line-height:1.95;color:var(--sub)}
+
+/* ── work index ── */
+.work{padding:0 0 150px}
+.work h2{font-size:clamp(34px,4.6vw,68px);margin-bottom:36px}
+.rows{list-style:none;border-top:1.5px solid #000}
+.rows a{display:grid;grid-template-columns:1.25fr 1fr .9fr;gap:24px;align-items:baseline;padding:26px 0;border-bottom:1px solid var(--line);text-decoration:none;transition:opacity .25s,padding .4s var(--ease)}
+.rows b{font-size:clamp(26px,3.2vw,46px);font-stretch:125%;font-weight:700;letter-spacing:-.04em;line-height:1.05}
+.rows span{color:var(--sub);font-size:16px}
+.rows em{font-style:normal;color:var(--faint);font-size:14px;text-align:end}
+@media (hover:hover){
+  .rows:hover a{opacity:.28}
+  .rows a:hover{opacity:1;padding-inline-start:20px}
+}
+#pv{position:fixed;left:0;top:0;z-index:30;width:320px;aspect-ratio:16/10;border-radius:14px;overflow:hidden;pointer-events:none;opacity:0;transform:translate3d(-999px,-999px,0);transition:opacity .2s,transform .14s ease-out;box-shadow:0 30px 60px -20px rgba(0,0,0,.45);background:#fff}
+#pv.on{opacity:1}
+#pv img{width:100%;height:100%;object-fit:cover;object-position:top}
+
+/* ── project sections ── */
+.pj{padding:150px 0 160px}
+.pj-mnsg{background:var(--bg)} .pj-mnsg .pj-name{color:var(--red)}
+.pj-dar{background:var(--navy);color:#fff;--rule:rgba(255,255,255,.22);--mute:var(--sky)}
+.pj-lt{background:#fff}
+.pj-demo{background:var(--accent-soft)} .pj-demo .pj-name{color:var(--accent)}
+.pj-snl{background:var(--lime);--rule:rgba(0,0,0,.24);--mute:#3F4A3A} .pj-snl .pj-name{color:var(--green)}
+.pj-top{display:grid;grid-template-columns:1fr auto;align-items:end;gap:40px;padding-bottom:34px;border-bottom:1.5px solid currentColor;margin-bottom:64px}
+.pj-name{font-size:clamp(50px,9.2vw,152px)}
+.pj-kind{font-size:17px;font-weight:500;text-align:end;max-width:15em;padding-bottom:12px;letter-spacing:-.01em}
+.split{display:grid;grid-template-columns:minmax(0,.62fr) minmax(0,1.38fr);gap:84px;align-items:start}
+.info{position:sticky;top:104px}
+.desc{font-size:17px;letter-spacing:-.015em}
+.visit{display:inline-flex;align-items:center;gap:12px;margin-top:28px;padding:13px 22px;border-radius:999px;background:#000;color:#fff;text-decoration:none;font-weight:600;font-size:15px;transition:background .2s,color .2s}
 .visit small{font-weight:400;opacity:.65;font-size:13.5px}
 .visit:hover{background:var(--accent)}
-.facts{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin:64px 0 80px;padding-top:22px;border-top:1.5px solid currentColor}
-.facts dt{font-size:13.5px;color:var(--sub);margin-bottom:4px}
-.facts dd{font-size:15.5px;font-weight:500;letter-spacing:-.01em}
+.pj-dar .visit{background:#fff;color:var(--navy)} .pj-dar .visit:hover{background:var(--sky)}
+.pj-snl .visit:hover{background:var(--green)} .pj-mnsg .visit:hover{background:var(--red)}
+.facts{margin-top:40px;border-top:1px solid var(--rule)}
+.facts>div{display:grid;grid-template-columns:84px 1fr;gap:16px;padding:14px 0;border-bottom:1px solid var(--rule);font-size:15px}
+.facts dt{color:var(--mute)}
+.facts dd{font-weight:500}
 .facts a{text-underline-offset:4px}
-figcaption{font-size:14px;color:var(--sub);margin-top:14px}
-.shot{display:block;width:100%;border:0;padding:0;background:#fff;overflow:hidden;cursor:zoom-in;border-radius:16px;box-shadow:0 1px 0 rgba(0,0,0,.04),0 24px 50px -24px rgba(0,0,0,.35)}
-.shot img{width:100%;height:100%;object-fit:cover;object-position:top}
-.shot.ph{aspect-ratio:390/844;border-radius:26px}
-.block{margin-top:120px}
-.two{display:grid;grid-template-columns:1fr 1.6fr;gap:60px}
-.two>*,.demo-grid>*,.d-main>*,.wide>*,.arch>*{min-width:0}
-.two>div>p.note{color:var(--sub);margin-top:16px;max-width:24em;font-size:15.5px}
-.list{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:34px 44px}
-.list b{display:block;font-size:17.5px;font-weight:600;letter-spacing:-.02em;margin-bottom:6px}
-.list span{font-size:15px;color:var(--sub)}
-.gallery{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:70px;align-items:start}
+.sw{display:flex;gap:7px;align-items:center}
+.sw i{display:block;width:22px;height:22px;border-radius:50%;box-shadow:inset 0 0 0 1px rgba(128,128,128,.35)}
+figcaption{font-size:13.5px;color:var(--mute);margin-top:12px}
+.shot{display:block;width:100%;border:0;padding:0;background:#fff;overflow:hidden;cursor:zoom-in;border-radius:14px;box-shadow:0 34px 60px -34px rgba(0,0,0,.4)}
+.shot img{width:100%;height:auto;transition:transform .7s var(--ease)}
+.shot:hover img{transform:scale(1.025)}
+.shot.ph{aspect-ratio:390/844;border-radius:24px}
+.shot.ph img{height:100%;object-fit:cover;object-position:top}
+.pj-mnsg .shot{box-shadow:0 0 0 1px #E4E4E0,0 34px 60px -34px rgba(0,0,0,.3)}
+.pj-dar .shot{box-shadow:0 40px 80px -30px rgba(0,0,0,.75)}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start}
+.g2 .full{grid-column:1/-1}
+.g2.stagger{padding-bottom:56px}
+.g2.stagger .drop{transform:translateY(56px)}
+.duo{position:relative;margin-bottom:84px}
+.duo .float{position:absolute;right:5%;bottom:-11%;width:21%;border:5px solid #050B22;box-shadow:0 30px 60px -10px rgba(0,0,0,.8)}
+.stackv{display:grid;gap:28px}
+.phones3{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;padding-bottom:48px}
+.phones3 .drop{transform:translateY(48px)}
+.mt{margin-top:44px}
+.notes{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:40px 52px;margin-top:120px;padding-top:40px;border-top:1px solid var(--rule)}
+.notes.n4{grid-template-columns:repeat(4,1fr)}
+.notes b,.list b{display:block;font-size:17px;font-weight:600;letter-spacing:-.02em;margin-bottom:6px}
+.notes span,.list span{font-size:15px;color:var(--mute)}
+.list{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:32px 44px}
+.h3x{font-size:clamp(26px,3vw,42px);font-stretch:125%;font-weight:700;letter-spacing:-.04em;line-height:1.05;margin-bottom:28px}
+.deep{margin-top:120px}
+.two{display:grid;grid-template-columns:minmax(0,.62fr) minmax(0,1.38fr);gap:84px;margin-top:120px}
+.two .h3x{margin-bottom:14px}
+.two .lead{color:var(--mute);font-size:15.5px;max-width:22em}
+.notes code,.list code,.points code{font-family:var(--mono);font-size:.88em;padding:1px 6px;border-radius:5px;background:rgba(0,0,0,.07)}
+.pj-dar .notes code{background:rgba(255,255,255,.14)}
 
-/* ── demo ── */
+
 .demo-sec{padding:120px 0 130px;background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .demo-sec .p-head{align-items:end;margin-bottom:56px}
 .demo-grid{display:grid;grid-template-columns:1.75fr 1fr;gap:48px;align-items:start}
@@ -135,24 +202,8 @@ figcaption{font-size:14px;color:var(--sub);margin-top:14px}
 .points span{display:block;font-size:14.5px;color:var(--sub);margin-top:3px}
 .points code,.inc code,.list code{font-family:var(--mono);font-size:.88em;background:var(--bg);padding:1px 6px;border-radius:5px;color:var(--ink)}
 
-/* ── projects ── */
-.project{padding:130px 0}
-.project.snl{background:var(--lime)}
-.project.dar{background:var(--navy);color:#fff}
-.project.mnsg{background:#fff}
-.snl .sec-h{color:var(--green)} .mnsg .sec-h{color:var(--red)}
-.dar .p-head p,.dar .facts dt,.dar figcaption,.dar .list span,.dar .note{color:var(--sky)!important}
-.dar .visit{background:#fff;color:var(--navy)} .dar .visit:hover{background:var(--sky)}
-.snl .visit:hover{background:var(--green)} .mnsg .visit:hover{background:var(--red)}
-.dar .shot{box-shadow:0 30px 70px -25px rgba(0,0,0,.7)}
-.mnsg .shot{border:1px solid #E6E6E3}
-.dar .list code{background:rgba(255,255,255,.12);color:#fff}
-.snl .list code,.snl .inc code{background:rgba(255,255,255,.6)}
 
-.phones{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;max-width:980px;margin:0 auto}
-.phones figure:nth-child(2){transform:translateY(56px)}
 
-/* architecture */
 .arch{display:grid;grid-template-columns:1fr auto 1.15fr auto 1fr;gap:0;align-items:stretch;margin-top:8px}
 .node{background:#fff;border:1.5px solid var(--ink);border-radius:16px;padding:20px}
 .node h5{font-size:16.5px;font-weight:600;letter-spacing:-.02em}
@@ -172,7 +223,8 @@ figcaption{font-size:14px;color:var(--sub);margin-top:14px}
 .nums b{display:block;font-size:clamp(34px,4vw,56px);font-weight:700;letter-spacing:-.05em;line-height:1}
 .nums span{font-size:14px;color:#3F4A3A}
 
-/* code */
+
+
 .tabs{display:flex;gap:4px;flex-wrap:wrap}
 .tabs button{border:0;background:rgba(0,0,0,.07);padding:9px 16px;border-radius:10px 10px 0 0;font-size:14px;cursor:pointer;font-weight:500}
 .tabs button[aria-selected=true]{background:var(--code-bg);color:#fff}
@@ -185,31 +237,8 @@ figcaption{font-size:14px;color:var(--sub);margin-top:14px}
 .snl .code-note{color:#33402E}.dar .code-note{color:var(--sky)}
 .code.solo{border-radius:14px}
 
-/* incidents */
-.inc{list-style:none}
-.inc li{display:grid;grid-template-columns:88px 1fr;gap:20px;padding:22px 0;border-top:1.5px solid rgba(0,0,0,.8)}
-.inc time{font-weight:600;color:var(--green);font-variant-numeric:tabular-nums}
-.inc b{display:block;font-size:17.5px;font-weight:600;letter-spacing:-.02em;margin-bottom:8px}
-.inc dl{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;font-size:15px}
-.inc dt{color:var(--green);font-weight:600}
-.inc dd{color:#2B3327}
-
-.wide{display:grid;grid-template-columns:1.8fr 1fr;gap:48px;align-items:end}
-.wide .ph{max-width:280px;margin-inline-start:auto}
-.wide figure:last-child figcaption{text-align:end}
-.log ol{list-style:none}
-.log li{display:grid;grid-template-columns:90px 1fr;gap:16px;padding:13px 0;border-bottom:1px solid rgba(0,0,0,.14)}
-.log time{font-weight:600;color:var(--green);font-variant-numeric:tabular-nums}
-.log li.key{font-weight:600}
-
-.mnsg-stage{display:grid;grid-template-columns:1fr 2.04fr;gap:28px;align-items:center}
-.mnsg .shot.wd{aspect-ratio:1512/801}
-.mnsg .hero-crop{aspect-ratio:740/801}
-.dar-stage{display:grid;grid-template-columns:1fr 250px;gap:44px;align-items:center}
-.dar-stage .wd{aspect-ratio:16/10}
 
 
-/* live translation */
 .th-lt{display:grid;place-content:center;gap:5px;background:var(--ink)!important;border-color:transparent!important}
 .th-lt i{display:block;height:7px;width:54px;border-radius:99px;background:#fff}
 .th-lt i+i{width:38px;background:#9DB2FF}
@@ -244,33 +273,40 @@ figcaption{font-size:14px;color:var(--sub);margin-top:14px}
 .sites .row{display:grid;grid-template-columns:1fr auto;gap:20px;padding:22px 0;border-bottom:1px solid #2E2F33;align-items:baseline}
 @media (max-width:700px){.lt-body{grid-template-columns:1fr}.lt-lines{height:176px}}
 @media (prefers-reduced-motion:reduce){.lt.playing .lt-dot{animation:none}}
-/* approach + contact */
-.approach{padding:140px 0}
-.steps{list-style:none;counter-reset:s}
-.steps li{counter-increment:s;display:grid;grid-template-columns:64px 1fr;padding:22px 0;border-top:1.5px solid var(--ink)}
-.steps li::before{content:counter(s,decimal-leading-zero);font-weight:600;color:var(--accent);font-variant-numeric:tabular-nums}
-.steps b{display:block;font-size:18.5px;font-weight:600;letter-spacing:-.02em;margin-bottom:3px}
-.steps span{color:var(--sub)}
-.stack{margin-top:64px;display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
-.stack h5{font-size:14px;color:var(--sub);font-weight:500;padding-top:14px;border-top:1.5px solid var(--ink);margin-bottom:10px}
-.stack ul{list-style:none;font-size:15px;line-height:1.95;font-weight:500}
-.contact{background:var(--ink);color:#fff;padding:140px 0 48px}
-.contact p{margin-top:28px;color:#9C9DA3;font-size:18px;max-width:28em}
-.reach{list-style:none;margin-top:44px;display:grid;grid-template-columns:1fr 1fr;gap:28px}
-.reach span{display:block;font-size:13.5px;color:#9C9DA3;margin-bottom:4px}
-.reach a{font-size:clamp(22px,2.8vw,36px);font-weight:600;letter-spacing:-.04em;text-decoration:none;overflow-wrap:anywhere}
-.reach a:hover{color:var(--sky)}
-@media (max-width:700px){.reach{grid-template-columns:1fr}}
-.sites{list-style:none;margin-top:64px;border-top:1px solid #2E2F33}
-.sites a{display:grid;grid-template-columns:1fr auto;gap:20px;padding:22px 0;border-bottom:1px solid #2E2F33;text-decoration:none;align-items:baseline}
-.sites b{font-size:clamp(22px,2.6vw,34px);font-weight:600;letter-spacing:-.04em}
-.sites span{color:#9C9DA3;font-size:15px}
-.sites a:hover b{color:var(--sky)}
-.btn{display:inline-block;margin-top:36px;padding:13px 22px;border-radius:999px;font-weight:600;font-size:15px;text-decoration:none;background:#fff;color:#000}
-.btn:hover{background:var(--accent);color:#fff}
-.contact footer{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-top:120px;font-size:13px;color:#77787E}
+.lt-about{font-size:13.5px;color:var(--mute);margin-top:14px;max-width:44em}
 
-#lb{position:fixed;inset:0;background:rgba(0,0,0,.88);display:none;align-items:center;justify-content:center;z-index:50;padding:28px;cursor:zoom-out}
+.pj-demo .points li{border-color:rgba(0,0,0,.14)}
+.pj-demo .points li:first-child{border-color:#000}
+.pj-demo .points code{background:rgba(255,255,255,.7)}
+.pj-demo .demo-head{max-width:40em;margin-bottom:56px}
+.pj-snl .nums span{color:#3F4A3A}
+
+/* ── approach ── */
+.approach{padding:150px 0}
+.approach h2{font-size:clamp(34px,4.6vw,68px);margin-bottom:56px}
+.steps{list-style:none;counter-reset:s;display:grid;grid-template-columns:repeat(4,1fr);gap:32px}
+.steps li{counter-increment:s;border-top:1.5px solid #000;padding-top:18px}
+.steps li::before{content:counter(s,decimal-leading-zero);display:block;font-stretch:125%;font-weight:700;font-size:15px;color:var(--accent);margin-bottom:34px}
+.steps b{display:block;font-size:19px;font-weight:600;letter-spacing:-.025em;line-height:1.35;margin-bottom:8px}
+.steps span{color:var(--sub);font-size:15px}
+
+/* ── contact ── */
+.contact{background:#000;color:#fff;padding:150px 0 44px}
+.contact h2{font-size:clamp(46px,8.4vw,140px)}
+.contact .lead{margin-top:28px;color:#9C9DA3;font-size:17.5px}
+.mail{display:flex;align-items:center;gap:24px;flex-wrap:wrap;margin-top:56px;padding:34px 0;border-top:1px solid #2E2F33;border-bottom:1px solid #2E2F33}
+.mail a{font-size:clamp(22px,5vw,76px);font-stretch:125%;font-weight:700;letter-spacing:-.04em;line-height:1.1;text-decoration:none;overflow-wrap:anywhere}
+.mail a:hover{color:var(--sky)}
+.copy{margin-inline-start:auto;border:1px solid #55565C;background:transparent;color:#fff;border-radius:999px;padding:12px 20px;font-size:14.5px;cursor:pointer;transition:background .2s,color .2s}
+.copy:hover{background:#fff;color:#000}
+.sites{list-style:none;margin-top:72px;display:grid;grid-template-columns:repeat(4,1fr);gap:28px}
+.sites li{border-top:1px solid #2E2F33;padding-top:16px}
+.sites b{display:block;font-stretch:125%;font-weight:700;font-size:18px;letter-spacing:-.02em}
+.sites a,.sites span{color:#9C9DA3;font-size:14.5px;text-underline-offset:4px}
+.sites a:hover{color:#fff}
+.contact footer{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-top:130px;font-size:13px;color:#77787E}
+
+#lb{position:fixed;inset:0;background:rgba(0,0,0,.9);display:none;align-items:center;justify-content:center;z-index:60;padding:28px;cursor:zoom-out}
 #lb.on{display:flex}
 #lb img{max-height:92vh;max-width:94vw;border-radius:12px;object-fit:contain}
 
@@ -286,75 +322,284 @@ figcaption{font-size:14px;color:var(--sub);margin-top:14px}
 }
 @media (max-width:980px){
   .wrap{padding:0 24px}
-  .hero-lead,.p-head,.two,.wide,.dar-stage,.mnsg-stage{grid-template-columns:1fr;gap:32px}
-  .visit{grid-column:auto;margin-top:0}
-  .index a{grid-template-columns:72px 1fr;gap:6px 16px}
-  .index .th{width:72px;height:46px;grid-row:span 3}
-  .index .st{display:none}
-  .facts,.nums,.stack{grid-template-columns:1fr 1fr}
-  .phones{gap:14px}
-  .phones figure:nth-child(2){transform:translateY(28px)}
-  .shot.ph{border-radius:18px}
-  .wide .ph,.dar-stage .ph{max-width:240px;margin:0 auto}
-  .wide figure:last-child figcaption{text-align:center}
-  .project,.demo-sec{padding:96px 0}
-  .block{margin-top:96px}
+  .hd{padding:18px 24px}
+  .wall-in{width:150vw;right:-46vw;opacity:.55}
+  .hero::before{background:linear-gradient(#000 0,rgba(0,0,0,.25) 22%,rgba(0,0,0,.55) 48%,#000 74%)}
+  .intro{padding:100px 0 90px}
+  .scope{grid-template-columns:1fr 1fr;margin-top:64px}
+  .work{padding-bottom:100px}
+  .rows a{grid-template-columns:1fr;gap:4px;padding:20px 0}
+  .rows em{text-align:start}
+  .pj{padding:100px 0 110px}
+  .pj-top{grid-template-columns:1fr;gap:14px;margin-bottom:44px}
+  .pj-kind{text-align:start;padding-bottom:0}
+  .split,.two{grid-template-columns:1fr;gap:44px}
+  .info{position:static}
+  .notes,.notes.n4{grid-template-columns:1fr 1fr;margin-top:84px}
+  .deep,.two{margin-top:84px}
+  .nums{grid-template-columns:1fr 1fr}
+  .steps{grid-template-columns:1fr 1fr}
+  .steps li::before{margin-bottom:18px}
+  .approach{padding:100px 0}
+  .sites{grid-template-columns:1fr 1fr}
+  .contact{padding-top:110px}
 }
 @media (max-width:700px){
   .d-main{grid-template-columns:1fr}
   .d-detail{position:static;order:-1}
-  .d-list{max-height:none}
+  .d-list{max-height:380px}
 }
 @media (max-width:600px){
   .wrap{padding:0 20px}
-  .top nav a:nth-child(-n+5){display:none}
-  .list,.gallery,.facts{grid-template-columns:1fr}
-  .phones figcaption{font-size:12px}
-  .inc li,.log li{grid-template-columns:62px 1fr;gap:12px}
+  .hd{padding:16px 20px}
+  .hd nav{gap:18px}
+  .hero-txt{padding-bottom:44px}
+  .g2{gap:16px}
+  .g2.stagger .drop{transform:translateY(24px)}
+  .g2.stagger{padding-bottom:24px}
+  .phones3{gap:12px;padding-bottom:24px}
+  .phones3 .drop{transform:translateY(24px)}
+  .shot.ph{border-radius:16px}
+  .duo{margin-bottom:56px}
+  .duo .float{border-width:3px;border-radius:14px;width:24%}
+  .notes,.notes.n4,.list{grid-template-columns:1fr;gap:28px}
   .code{font-size:12px;padding:18px}
   .d-body{padding:16px 12px 12px}
+  .copy{margin-inline-start:0}
 }
-@media (prefers-reduced-motion:reduce){.index li{animation:none;opacity:1;transform:none}html{scroll-behavior:auto}}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .track,.hero h1 i,.hero-foot{animation:none}
+  .hero h1 i{transform:none}
+  .hero-foot{opacity:1}
+  .shot img{transition:none}
+}
 </style>
 </head>
 <body>
 
-<div class="wrap">
-  <header class="top">
-    <span class="me">Portfolio 2026</span>
-    <nav aria-label="페이지 이동">
-      <a href="#demo">Live demo</a>
-      <a href="#bingo">Bingo Tour</a>
-      <a href="#translate">Translation</a>
-      <a href="#mnsg">MNSG</a>
-      <a href="#daruon">Daruon</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>
+<header class="hd">
+  <a class="brand" href="#top">Web Portfolio</a>
+  <nav aria-label="페이지 이동">
+    <a href="#work">Work</a>
+    <a href="#demo">Demo</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
 
-  <section class="hero" aria-labelledby="h">
-    <h1 id="h"><span>Web engineering,</span><span class="i1">front to back.</span></h1>
-    <div class="hero-lead">
-      <p>운영 중인 웹사이트 세 개와 행사용 실시간 통역 서비스를 만들었습니다. 화면 구현부터 서버 API, 데이터베이스, 관리자 도구, 배포와 운영 중 문제 해결까지 다룹니다. 이 페이지에는 각 프로젝트의 구조와 실제 코드, 그리고 직접 써볼 수 있는 검색 데모를 담았습니다.</p>
+<section class="hero" id="top" aria-labelledby="h">
+  <div class="wall" aria-hidden="true">
+    <div class="wall-in">
+      <div class="col c1"><div class="track"><img src="img/mnsg_intro.webp" alt=""><img src="img/daruon_hero.webp" alt=""><img src="img/snl_landing.webp" alt=""><img src="img/mnsg_business.webp" alt=""><img src="img/daruon_impact.webp" alt=""><img src="img/mnsg_intro.webp" alt=""><img src="img/daruon_hero.webp" alt=""><img src="img/snl_landing.webp" alt=""><img src="img/mnsg_business.webp" alt=""><img src="img/daruon_impact.webp" alt=""></div></div>
+      <div class="col c2"><div class="track"><img src="img/daruon_ax.webp" alt=""><img src="img/snl_bingo.webp" alt=""><img src="img/mnsg_about.webp" alt=""><img src="img/daruon_biz.webp" alt=""><img src="img/mnsg_workflow.webp" alt=""><img src="img/daruon_ax.webp" alt=""><img src="img/snl_bingo.webp" alt=""><img src="img/mnsg_about.webp" alt=""><img src="img/daruon_biz.webp" alt=""><img src="img/mnsg_workflow.webp" alt=""></div></div>
+      <div class="col c3"><div class="track"><img src="img/mnsg_why.webp" alt=""><img src="img/daruon_mobile.webp" alt=""><img src="img/snl_admin.webp" alt=""><img src="img/mnsg_contact.webp" alt=""><img src="img/daruon_cta.webp" alt=""><img src="img/mnsg_why.webp" alt=""><img src="img/daruon_mobile.webp" alt=""><img src="img/snl_admin.webp" alt=""><img src="img/mnsg_contact.webp" alt=""><img src="img/daruon_cta.webp" alt=""></div></div>
     </div>
-    <ul class="index" aria-label="작업 목록">
-      <li><a href="#demo"><span class="th th-demo" aria-hidden="true"><i></i></span><b>Multilingual Search</b><span>직접 써보는 다국어 검색 데모</span><span class="st">Vanilla JS · i18n · RTL · a11y</span></a></li>
-      <li><a href="#bingo"><span class="th"><img src="img/snl_bingo.webp" alt=""></span><b>Shop Bingo Tour</b><span>오프라인 연계 이벤트 웹앱</span><span class="st">Cloudflare Workers · D1 · Vanilla JS</span></a></li>
-      <li><a href="#translate"><span class="th th-lt" aria-hidden="true"><i></i><i></i></span><b>Live Translation</b><span>행사용 실시간 통역 서비스</span><span class="st">DeepL · 실시간 자막 · 음성</span></a></li>
-      <li><a href="#mnsg"><span class="th"><img src="img/mnsg_intro.webp" alt=""></span><b>MNSG</b><span>크리에이터 비즈니스 기업 사이트</span><span class="st">React · Vite · Tailwind CSS</span></a></li>
-      <li><a href="#daruon"><span class="th"><img src="img/daruon_hero.webp" alt=""></span><b>Daruon</b><span>AI·디지털 사업 기업 사이트</span><span class="st">HTML · CSS · Canvas · SVG</span></a></li>
-    </ul>
-  </section>
-</div>
+  </div>
+  <div class="wrap hero-txt">
+    <h1 class="x" id="h"><span><i>Design,</i></span><span><i>build,</i></span><span><i>run.</i></span></h1>
+    <div class="hero-foot">
+      <p>웹사이트를 디자인하고, 개발하고, 오픈한 뒤의 운영까지 맡습니다. 실제로 서비스 중인 작업과 직접 써볼 수 있는 데모를 모았습니다.</p>
+      <a class="pill" href="#work">작업 보기</a>
+    </div>
+  </div>
+</section>
 
-<!-- ═══════════ LIVE DEMO ═══════════ -->
-<section class="demo-sec" id="demo" aria-labelledby="dh">
+<section class="intro">
   <div class="wrap">
-    <div class="p-head">
-      <h2 class="sec-h" id="dh">Live demo<span class="ko">다국어 전문분야 검색</span></h2>
-      <p>여러 언어권 사용자가 법률 전문분야와 사무소를 찾는 화면을 가정해 새로 만든 데모입니다. 아래에서 바로 검색하고, 언어를 바꾸고, 키보드만으로 조작해 볼 수 있습니다. 사무소와 수치는 모두 가상의 데이터입니다.</p>
+    <p class="state">기획 의도를 읽고, 화면을 디자인하고, 코드로 완성합니다. <span>오픈한 뒤에는 운영하며 계속 다듬습니다.</span></p>
+    <div class="scope">
+      <div><h3>Design</h3><ul><li>UI 디자인</li><li>반응형 레이아웃</li><li>타이포그래피</li><li>인터랙션, 모션</li></ul></div>
+      <div><h3>Frontend</h3><ul><li>HTML, CSS</li><li>JavaScript</li><li>React, Vite</li><li>Tailwind CSS</li></ul></div>
+      <div><h3>Backend</h3><ul><li>Cloudflare Workers</li><li>D1 (SQLite)</li><li>REST API 설계</li><li>관리자 도구</li></ul></div>
+      <div><h3>Delivery</h3><ul><li>GitHub 자동 배포</li><li>도메인 연결</li><li>다국어, RTL</li><li>운영 중 대응</li></ul></div>
     </div>
+  </div>
+</section>
 
+<section class="work" id="work" aria-labelledby="wh">
+  <div class="wrap">
+    <h2 class="x" id="wh">Selected work</h2>
+    <ul class="rows" id="rows">
+      <li><a href="#mnsg" data-img="img/mnsg_intro.webp"><b>MNSG</b><span>크리에이터 비즈니스 기업 사이트</span><em>React, Vite, Tailwind CSS</em></a></li>
+      <li><a href="#daruon" data-img="img/daruon_hero.webp"><b>Daruon</b><span>AI, 디지털 사업 기업 사이트</span><em>HTML, CSS, Canvas, SVG</em></a></li>
+      <li><a href="#translate"><b>Live Translation</b><span>행사용 실시간 통역 서비스</span><em>DeepL, 실시간 자막과 음성</em></a></li>
+      <li><a href="#demo"><b>Multilingual Search</b><span>직접 써보는 다국어 검색 데모</span><em>Vanilla JS, i18n, RTL</em></a></li>
+      <li><a href="#bingo" data-img="img/snl_admin.webp"><b>Shop Bingo Tour</b><span>오프라인 연계 이벤트 웹앱</span><em>Cloudflare Workers, D1</em></a></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ═══════════ MNSG ═══════════ -->
+<section class="pj pj-mnsg" id="mnsg" aria-labelledby="p-mnsg">
+  <div class="wrap">
+    <header class="pj-top">
+      <h2 class="x pj-name" id="p-mnsg">MNSG</h2>
+      <p class="pj-kind">크리에이터 비즈니스 그룹 기업 사이트</p>
+    </header>
+    <div class="split">
+      <aside class="info">
+        <p class="desc">인플루언서 발굴, 콘텐츠 제작, 마케팅, 커머스, 사업 인큐베이션을 하는 회사의 공식 사이트입니다. 흰 바탕에 레드 포인트와 큰 타이포그래피로 브랜드 메시지를 전면에 두고, 다섯 개 사업 영역과 크리에이터, 협업 절차를 한 페이지 흐름으로 보여줍니다.</p>
+        <a class="visit" href="https://mnsgstudio.com/" target="_blank" rel="noopener">사이트 방문하기 <small>mnsgstudio.com</small></a>
+        <dl class="facts">
+          <div><dt>사이트</dt><dd><a href="https://mnsgstudio.com/" target="_blank" rel="noopener">mnsgstudio.com</a></dd></div>
+          <div><dt>사용 기술</dt><dd>React, Vite, Tailwind CSS</dd></div>
+          <div><dt>구성</dt><dd>9개 섹션 싱글 페이지</dd></div>
+          <div><dt>컬러</dt><dd class="sw" aria-label="화이트, 블랙, 레드"><i style="background:#fff"></i><i style="background:#000"></i><i style="background:#B3161C"></i></dd></div>
+        </dl>
+      </aside>
+      <div class="g2 stagger">
+        <figure class="full"><button class="shot" data-full="img/mnsg_intro.webp"><img src="img/mnsg_intro.webp" alt="MNSG 브랜드 메시지 섹션" loading="lazy" width="1512" height="801"></button><figcaption>회사의 지향점을 큰 타이포로 보여주는 섹션</figcaption></figure>
+        <figure><button class="shot" data-full="img/mnsg_about.webp"><img src="img/mnsg_about.webp" alt="About 섹션" loading="lazy" width="1512" height="801"></button><figcaption>회사 소개와 다섯 가지 사업 카드</figcaption></figure>
+        <figure class="drop"><button class="shot" data-full="img/mnsg_business.webp"><img src="img/mnsg_business.webp" alt="사업 영역 섹션" loading="lazy" width="1512" height="801"></button><figcaption>탭으로 전환하는 사업 영역</figcaption></figure>
+        <figure><button class="shot" data-full="img/mnsg_workflow.webp"><img src="img/mnsg_workflow.webp" alt="협업 절차 섹션" loading="lazy" width="1512" height="801"></button><figcaption>다섯 단계 협업 절차</figcaption></figure>
+        <figure class="drop"><button class="shot" data-full="img/mnsg_contact.webp"><img src="img/mnsg_contact.webp" alt="문의 섹션" loading="lazy" width="1512" height="801"></button><figcaption>연락처와 문의 접수 폼</figcaption></figure>
+      </div>
+    </div>
+    <ul class="notes">
+      <li><b>타이포 중심 화면</b><span>큰 제목과 넉넉한 여백으로 메시지가 먼저 읽히게 하고, 레드는 강조에만 씁니다.</span></li>
+      <li><b>컴포넌트 단위 싱글 페이지</b><span>React로 섹션을 컴포넌트로 나누고, 고정 메뉴에서 각 섹션으로 바로 이동합니다.</span></li>
+      <li><b>탭으로 바뀌는 사업 소개</b><span>다섯 개 사업 영역 탭을 누르면 설명, 핵심 업무, 사례 카드가 함께 바뀝니다.</span></li>
+      <li><b>문의 유형별 폼</b><span>문의 유형을 고르고 필수 항목을 확인해 접수합니다.</span></li>
+      <li><b>Tailwind 반응형</b><span>화면 크기에 맞춰 여백과 그리드가 바뀝니다.</span></li>
+      <li><b>영상 배경</b><span>배경 영상 위에 반투명 섹션을 겹쳐 스크롤 내내 분위기가 이어집니다.</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ═══════════ DARUON ═══════════ -->
+<section class="pj pj-dar" id="daruon" aria-labelledby="p-dar">
+  <div class="wrap">
+    <header class="pj-top">
+      <h2 class="x pj-name" id="p-dar">Daruon</h2>
+      <p class="pj-kind">다루온 기업 사이트</p>
+    </header>
+    <div class="split">
+      <aside class="info">
+        <p class="desc">AI 전환, 시스템 통합, 소프트웨어 개발, 커머스와 미디어 사업을 하는 회사의 원페이지 소개 사이트입니다. 짙은 네이비에 블루 포인트를 얹고, 실제 서비스처럼 보이는 UI 목업으로 사업 내용을 설명합니다.</p>
+        <a class="visit" href="https://daruon.co.kr/" target="_blank" rel="noopener">사이트 방문하기 <small>daruon.co.kr</small></a>
+        <dl class="facts">
+          <div><dt>사이트</dt><dd><a href="https://daruon.co.kr/" target="_blank" rel="noopener">daruon.co.kr</a></dd></div>
+          <div><dt>사용 기술</dt><dd>HTML, CSS, Vanilla JS, Canvas, SVG</dd></div>
+          <div><dt>구성</dt><dd>HTML 파일 하나, 약 42KB</dd></div>
+          <div><dt>컬러</dt><dd class="sw" aria-label="네이비, 블루, 화이트"><i style="background:#0A1A4A"></i><i style="background:#1546D8"></i><i style="background:#fff"></i></dd></div>
+        </dl>
+      </aside>
+      <div>
+        <figure class="duo">
+          <button class="shot" data-full="img/daruon_hero.webp"><img src="img/daruon_hero.webp" alt="다루온 메인 화면" loading="lazy" width="1600" height="1000"></button>
+          <button class="shot ph float" data-full="img/daruon_mobile.webp"><img src="img/daruon_mobile.webp" alt="다루온 모바일 화면" loading="lazy"></button>
+          <figcaption>메인 화면과 모바일 화면. 배경의 점과 선은 Canvas로 그립니다</figcaption>
+        </figure>
+        <figure><button class="shot" data-full="img/daruon_impact.webp"><img src="img/daruon_impact.webp" alt="도입 효과 섹션" loading="lazy"></button><figcaption>화면에 들어오면 숫자가 올라가는 도입 효과 섹션</figcaption></figure>
+        <div class="g2 mt">
+          <figure><button class="shot" data-full="img/daruon_ax.webp"><img src="img/daruon_ax.webp" alt="서비스 소개 섹션" loading="lazy"></button><figcaption>탭으로 전환하는 서비스 소개</figcaption></figure>
+          <figure><button class="shot" data-full="img/daruon_biz.webp"><img src="img/daruon_biz.webp" alt="사업 영역 섹션" loading="lazy"></button><figcaption>네 가지 사업 영역</figcaption></figure>
+        </div>
+      </div>
+    </div>
+    <ul class="notes">
+      <li><b>UI 목업으로 설명</b><span>추상적인 사업 내용을 대시보드 화면 목업으로 보여줘 한눈에 이해되게 했습니다.</span></li>
+      <li><b>스크롤 연동 등장</b><span><code>IntersectionObserver</code>로 섹션 등장, 목업 재생, 숫자 카운트업을 처리합니다.</span></li>
+      <li><b>Canvas 파티클 배경</b><span>점들이 가까워지면 선으로 이어지는 배경을 <code>requestAnimationFrame</code>으로 그립니다.</span></li>
+      <li><b>SVG 로고 3종</b><span>심볼, 워드마크, 전체 로고가 어떤 해상도에서도 선명합니다.</span></li>
+      <li><b>모바일 대응</b><span>메뉴, 카드, 리스트가 작은 화면에 맞게 재배치됩니다.</span></li>
+      <li><b>파일 하나로 배포</b><span>HTML, CSS, JS를 한 파일에 담아 요청 수를 줄였습니다.</span></li>
+    </ul>
+    <div class="two">
+      <div><h3 class="h3x">Code</h3><p class="lead">외부 JS 라이브러리 없이 브라우저 기본 API만으로 인터랙션을 만들었습니다.</p></div>
+      <div>
+<pre class="code solo" tabindex="0"><span class="c">// 숫자 카운트업 — 화면에 60% 이상 보일 때 한 번만 실행</span>
+<span class="k">const</span> cio = <span class="k">new</span> IntersectionObserver(es =&gt; es.forEach(e =&gt; {
+  <span class="k">if</span> (!e.isIntersecting) <span class="k">return</span>;
+  cio.unobserve(e.target);
+  <span class="k">const</span> el = e.target, to = +el.dataset.to, t0 = performance.now();
+  (<span class="k">function</span> tick(t){
+    <span class="k">const</span> p = Math.min((t - t0) / 1400, 1);
+    el.textContent = Math.round(to * (1 - Math.pow(1 - p, 3)));   <span class="c">// ease-out cubic</span>
+    <span class="k">if</span> (p &lt; 1) requestAnimationFrame(tick);
+  })(t0);
+}), { threshold: .6 });</pre>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ LIVE TRANSLATION ═══════════ -->
+<section class="pj pj-lt" id="translate" aria-labelledby="p-lt">
+  <div class="wrap">
+    <header class="pj-top">
+      <h2 class="x pj-name" id="p-lt">Live Translation</h2>
+      <p class="pj-kind">행사용 실시간 통역 서비스</p>
+    </header>
+    <div class="split">
+      <aside class="info">
+        <p class="desc">컨퍼런스와 각종 행사에서 쓰는 실시간 통역 사이트입니다. 발표자가 말하면, 링크로 접속한 청중이 각자 자기 언어로 번역된 자막과 음성을 실시간으로 받습니다. 발표가 끝난 뒤에 접속해도 발표 내용을 다시 확인할 수 있습니다.</p>
+        <dl class="facts">
+          <div><dt>공개 범위</dt><dd>비공개 링크, 행사 참가자에게 공유</dd></div>
+          <div><dt>번역 엔진</dt><dd>DeepL</dd></div>
+          <div><dt>청중</dt><dd>번역 자막, 번역 음성</dd></div>
+          <div><dt>발표 기록</dt><dd>발표가 끝난 뒤에도 다시 보기</dd></div>
+        </dl>
+      </aside>
+      <div>
+      <div class="lt" id="lt">
+        <div class="lt-bar">
+          <strong>청중 화면 재현<span class="d-tag">예시</span></strong>
+          <div class="lt-ctl">
+            <div class="d-lang" role="group" aria-label="보기 방식">
+              <button type="button" data-mode="live">실시간</button>
+              <button type="button" data-mode="rec">발표 후 기록</button>
+            </div>
+            <div class="d-lang" role="group" aria-label="청중 언어">
+              <button type="button" data-l="en" lang="en">English</button>
+              <button type="button" data-l="ja" lang="ja">日本語</button>
+              <button type="button" data-l="zh" lang="zh-CN">中文</button>
+            </div>
+            <button type="button" class="lt-play" id="lt-play">발표 재생</button>
+          </div>
+        </div>
+        <div class="lt-body" id="lt-body">
+          <div class="lt-spk"><p class="lt-cap"><i class="lt-dot" aria-hidden="true"></i>발표자 · 한국어</p><div class="lt-lines" id="lt-src"></div></div>
+          <div class="lt-aud"><p class="lt-cap" id="lt-who"></p><div class="lt-lines" id="lt-out" aria-live="polite"></div></div>
+        </div>
+        <ol class="lt-rec" id="lt-rec" hidden></ol>
+        <div class="d-foot">흐름을 보여주기 위한 재현 화면입니다. 예시 문장이며, 실제 서비스 화면이나 DeepL 번역 결과가 아닙니다.</div>
+      </div>
+        <p class="lt-about">서비스 링크가 비공개라, 실제 화면 대신 청중이 보게 되는 흐름을 예시 문장으로 재현했습니다. "발표 재생"을 누르면 발표자의 말과 번역 자막이 차례로 나타납니다.</p>
+      </div>
+    </div>
+    <div class="deep">
+      <h3 class="h3x">Flow</h3>
+    <div class="arch" role="img" aria-label="발표자의 음성이 문장으로 바뀌고, DeepL로 청중 각자의 언어로 번역되어 자막과 음성으로 전달되며, 발표 내용은 기록으로 남아 나중에 다시 볼 수 있는 흐름">
+      <div class="node"><h5>발표자</h5><p>행사장에서 평소처럼 발표</p><ul><li>마이크로 말하기</li></ul></div>
+      <div class="wire one">음성</div>
+      <div class="node core"><h5>실시간 처리</h5><p>말하는 동안 계속 이어지는 단계</p><ul><li>음성을 문장으로 변환</li><li>DeepL로 언어별 번역</li><li>접속자가 고른 언어로 전달</li></ul></div>
+      <div class="wire one">자막 · 음성</div>
+      <div class="arch-col">
+        <div class="node"><h5>청중</h5><p>공유받은 링크로 접속</p><ul><li>내 언어 선택</li><li>번역 자막 읽기</li><li>번역 음성 듣기</li></ul></div>
+        <div class="node"><h5>발표 기록</h5><p>발표가 끝난 뒤</p><ul><li>나중에 접속해 내용 확인</li></ul></div>
+      </div>
+    </div>
+    </div>
+    <ul class="notes n4">
+      <li><b>실시간 번역 자막</b><span>발표자가 말하는 내용을 DeepL 엔진으로 번역해 청중 화면에 바로 보여줍니다.</span></li>
+      <li><b>번역 음성</b><span>자막과 함께, 번역된 내용을 음성으로도 들을 수 있습니다.</span></li>
+      <li><b>접속자마다 다른 언어</b><span>같은 링크로 들어온 청중이 각자 자기 언어로 발표를 따라갑니다.</span></li>
+      <li><b>발표 후 다시 보기</b><span>발표가 끝난 뒤에 접속해도 어떤 내용이었는지 확인할 수 있습니다.</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ═══════════ DEMO ═══════════ -->
+<section class="pj pj-demo" id="demo" aria-labelledby="p-demo">
+  <div class="wrap">
+    <header class="pj-top">
+      <h2 class="x pj-name" id="p-demo">Multilingual Search</h2>
+      <p class="pj-kind">직접 써보는 다국어 검색 데모</p>
+    </header>
+    <div class="demo-head">
+      <p class="desc">여러 언어권 사용자가 법률 전문분야와 사무소를 찾는 화면을 가정해 새로 만든 데모입니다. 아래에서 바로 검색하고, 언어를 바꾸고, 키보드만으로 조작해 볼 수 있습니다. 사무소와 수치는 모두 가상의 데이터입니다.</p>
+    </div>
     <div class="demo-grid">
       <div class="d-app" id="d-app" lang="ko" dir="ltr">
         <div class="d-bar">
@@ -395,9 +640,8 @@ figcaption{font-size:14px;color:var(--sub);margin-top:14px}
         <div class="d-state" id="d-state" aria-hidden="true"></div>
         <div class="d-foot" data-t="foot"></div>
       </div>
-
       <div>
-        <h3 class="sub-h" style="margin-bottom:22px">구현 포인트</h3>
+        <h3 class="h3x">구현 포인트</h3>
         <ul class="points">
           <li><b>초성 검색</b><span><code>ㅌㅎ</code>만 입력해도 "특허"를 찾습니다. 한글 유니코드 값에서 초성을 계산해 비교합니다.</span></li>
           <li><b>일상어와 다른 언어로도 검색</b><span><code>월세</code>, <code>patent</code>, <code>相続</code>처럼 일상어나 다른 언어로 입력해도 해당 전문분야로 연결하고, 왜 일치했는지 표시합니다.</span></li>
@@ -412,28 +656,35 @@ figcaption{font-size:14px;color:var(--sub);margin-top:14px}
 </section>
 
 <!-- ═══════════ BINGO TOUR ═══════════ -->
-<section class="project snl" id="bingo" aria-labelledby="p1">
+<section class="pj pj-snl" id="bingo" aria-labelledby="p-snl">
   <div class="wrap">
-    <div class="p-head">
-      <h2 class="sec-h" id="p1">Shop Bingo Tour<span class="ko">샤로수길 샵가능 빙고투어</span></h2>
-      <p>샤로수길 참여 매장을 방문하며 3×3 빙고판을 채우는 모바일 이벤트 웹앱입니다. 앱 설치나 로그인 없이 브라우저만으로 참여하고, 매장 코드로 스탬프를 받고, 줄을 완성할 때마다 럭키드로우 응모권을 받습니다.</p>
-      <a class="visit" href="https://theglowsynrgy.org/" target="_blank" rel="noopener">사이트 방문하기 <small>theglowsynrgy.org</small></a>
+    <header class="pj-top">
+      <h2 class="x pj-name" id="p-snl">Shop Bingo Tour</h2>
+      <p class="pj-kind">샤로수길 샵가능 빙고투어</p>
+    </header>
+    <div class="split">
+      <aside class="info">
+        <p class="desc">샤로수길 참여 매장을 방문하며 3×3 빙고판을 채우는 모바일 이벤트 웹앱입니다. 그린과 블루, 스티커 같은 테두리로 축제 분위기를 내고, 앱 설치나 로그인 없이 브라우저만으로 참여하게 했습니다.</p>
+        <a class="visit" href="https://theglowsynrgy.org/" target="_blank" rel="noopener">사이트 방문하기 <small>theglowsynrgy.org</small></a>
+        <dl class="facts">
+          <div><dt>사이트</dt><dd><a href="https://theglowsynrgy.org/" target="_blank" rel="noopener">theglowsynrgy.org</a><br>현재 종료 안내 페이지</dd></div>
+          <div><dt>사용 기술</dt><dd>HTML, CSS, Vanilla JS, Cloudflare Pages, Workers, D1</dd></div>
+          <div><dt>구성</dt><dd>참여자 웹앱, 운영자 대시보드, API 서버</dd></div>
+          <div><dt>운영</dt><dd>29일간 실서비스</dd></div>
+          <div><dt>컬러</dt><dd class="sw" aria-label="그린, 라임, 블루, 옐로"><i style="background:#2E6B34"></i><i style="background:#DCE9C4"></i><i style="background:#4C7FDE"></i><i style="background:#F4E14E"></i></dd></div>
+        </dl>
+      </aside>
+      <div>
+        <div class="phones3">
+          <figure><button class="shot ph" data-full="img/snl_landing.webp"><img src="img/snl_landing.webp" alt="랜딩 화면" loading="lazy"></button><figcaption>키비주얼을 적용한 랜딩</figcaption></figure>
+          <figure class="drop"><button class="shot ph" data-full="img/snl_bingo.webp"><img src="img/snl_bingo.webp" alt="빙고판 진행 화면" loading="lazy"></button><figcaption>코스 이름과 스탬프 현황</figcaption></figure>
+          <figure><button class="shot ph" data-full="img/snl_closed.webp"><img src="img/snl_closed.webp" alt="이벤트 종료 페이지" loading="lazy"></button><figcaption>이벤트 종료 후 감사 페이지</figcaption></figure>
+        </div>
+        <figure class="mt"><button class="shot" data-full="img/snl_admin.webp"><img src="img/snl_admin.webp" alt="운영자 대시보드" loading="lazy" width="1600" height="1000"></button><figcaption>운영자 대시보드. 개인정보 보호를 위해 시연용 데이터로 캡처했습니다.</figcaption></figure>
+      </div>
     </div>
-    <dl class="facts">
-      <div><dt>사이트</dt><dd><a href="https://theglowsynrgy.org/" target="_blank" rel="noopener">theglowsynrgy.org</a><br>현재 종료 안내 페이지</dd></div>
-      <div><dt>사용 기술</dt><dd>HTML, CSS, Vanilla JS<br>Cloudflare Pages, Workers, D1</dd></div>
-      <div><dt>구성</dt><dd>참여자 웹앱, 운영자 대시보드,<br>API 서버</dd></div>
-      <div><dt>운영</dt><dd>29일간 실서비스</dd></div>
-    </dl>
-
-    <div class="phones">
-      <figure><button class="shot ph" data-full="img/snl_landing.webp"><img src="img/snl_landing.webp" alt="랜딩 화면" loading="lazy"></button><figcaption>키비주얼을 적용한 랜딩 화면</figcaption></figure>
-      <figure><button class="shot ph" data-full="img/snl_bingo.webp"><img src="img/snl_bingo.webp" alt="빙고판 진행 화면" loading="lazy"></button><figcaption>직접 이름 붙인 코스와 스탬프 현황</figcaption></figure>
-      <figure><button class="shot ph" data-full="img/snl_closed.webp"><img src="img/snl_closed.webp" alt="이벤트 종료 페이지" loading="lazy"></button><figcaption>이벤트 종료 후 바꿔 단 감사 페이지</figcaption></figure>
-    </div>
-
-    <div class="block" style="margin-top:170px">
-      <h3 class="sub-h" style="margin-bottom:28px">Architecture</h3>
+    <div class="deep">
+      <h3 class="h3x">Architecture</h3>
       <div class="arch" role="img" aria-label="참여자 브라우저와 운영자 브라우저가 Cloudflare Pages Worker의 API를 호출하고, Worker가 D1 데이터베이스를 읽고 쓰는 구조">
         <div class="arch-col">
           <div class="node"><h5>참여자 브라우저</h5><p>모바일 웹, 설치와 로그인 없음</p><ul><li>index.html</li><li>localStorage 즉시 저장</li><li>800ms 디바운스 동기화</li></ul></div>
@@ -444,19 +695,15 @@ figcaption{font-size:14px;color:var(--sub);margin-top:14px}
         <div class="wire">prepared<br>statements</div>
         <div class="node"><h5>D1 (SQLite)</h5><p>테이블 3개</p><ul><li>stores  매장·쿠폰·코드</li><li>users   참여자·진행 상태</li><li>events  스탬프·빙고·응모 기록</li></ul></div>
       </div>
-            <div class="nums">
+      <div class="nums">
         <div><b>14</b><span>API 엔드포인트</span></div>
         <div><b>3</b><span>D1 테이블</span></div>
         <div><b>38</b><span>커밋</span></div>
         <div><b>29</b><span>일간 실서비스 운영</span></div>
       </div>
     </div>
-
-    <div class="block two">
-      <div>
-        <h3 class="sub-h">Key points</h3>
-        <p class="note" style="color:#33402E">코드는 저장소의 실제 코드에서 발췌했습니다.</p>
-      </div>
+    <div class="two">
+      <div><h3 class="h3x">Key points</h3><p class="lead">코드는 저장소의 실제 코드에서 발췌했습니다.</p></div>
       <div>
 <pre class="code solo" tabindex="0"><span class="c">// _worker.js — 매장 코드는 D1에만 있고 공개 API 응답에는 포함하지 않는다</span>
 <span class="k">if</span> (p === <span class="s">'/api/redeem'</span> &amp;&amp; request.method === <span class="s">'POST'</span>) {
@@ -482,213 +729,41 @@ figcaption{font-size:14px;color:var(--sub);margin-top:14px}
         </ul>
       </div>
     </div>
-
-    <div class="block wide">
-      <figure><button class="shot" data-full="img/snl_admin.webp"><img src="img/snl_admin.webp" alt="운영자 대시보드" loading="lazy"></button><figcaption>운영자 대시보드. 개인정보 보호를 위해 시연용 데이터로 캡처했습니다.</figcaption></figure>
-      <figure><button class="shot ph" data-full="img/snl_privacy.webp"><img src="img/snl_privacy.webp" alt="참여 정보 입력 화면" loading="lazy"></button><figcaption>전화번호 하이픈 자동 입력</figcaption></figure>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════ LIVE TRANSLATION ═══════════ -->
-<section class="project lt-sec" id="translate" aria-labelledby="p3">
-  <div class="wrap">
-    <div class="p-head">
-      <h2 class="sec-h" id="p3">Live Translation<span class="ko">행사용 실시간 통역 서비스</span></h2>
-      <p>컨퍼런스와 각종 행사에서 쓰는 실시간 통역 사이트입니다. 발표자가 말하면, 링크로 접속한 청중이 각자 자기 언어로 번역된 자막과 음성을 실시간으로 받습니다. 발표가 끝난 뒤에 접속해도 발표 내용을 다시 확인할 수 있습니다.</p>
-    </div>
-    <dl class="facts">
-      <div><dt>공개 범위</dt><dd>비공개 링크<br>행사 참가자에게 공유</dd></div>
-      <div><dt>번역 엔진</dt><dd>DeepL</dd></div>
-      <div><dt>청중이 받는 것</dt><dd>번역 자막,<br>번역 음성</dd></div>
-      <div><dt>발표 기록</dt><dd>발표가 끝난 뒤에도<br>접속해 다시 보기</dd></div>
-    </dl>
-
-    <h3 class="sub-h" style="margin-bottom:28px">Flow</h3>
-    <div class="arch" role="img" aria-label="발표자의 음성이 문장으로 바뀌고, DeepL로 청중 각자의 언어로 번역되어 자막과 음성으로 전달되며, 발표 내용은 기록으로 남아 나중에 다시 볼 수 있는 흐름">
-      <div class="node"><h5>발표자</h5><p>행사장에서 평소처럼 발표</p><ul><li>마이크로 말하기</li></ul></div>
-      <div class="wire one">음성</div>
-      <div class="node core"><h5>실시간 처리</h5><p>말하는 동안 계속 이어지는 단계</p><ul><li>음성을 문장으로 변환</li><li>DeepL로 언어별 번역</li><li>접속자가 고른 언어로 전달</li></ul></div>
-      <div class="wire one">자막 · 음성</div>
-      <div class="arch-col">
-        <div class="node"><h5>청중</h5><p>공유받은 링크로 접속</p><ul><li>내 언어 선택</li><li>번역 자막 읽기</li><li>번역 음성 듣기</li></ul></div>
-        <div class="node"><h5>발표 기록</h5><p>발표가 끝난 뒤</p><ul><li>나중에 접속해 내용 확인</li></ul></div>
-      </div>
-    </div>
-
-    <div class="block two">
-      <div>
-        <h3 class="sub-h">How it works</h3>
-        <p class="note">서비스 링크가 비공개라, 실제 화면 대신 청중이 보게 되는 흐름을 예시 문장으로 재현했습니다. "발표 재생"을 누르면 발표자의 말과 번역 자막이 차례로 나타나고, "발표 후 기록"에서는 끝난 발표를 다시 읽는 화면을 볼 수 있습니다.</p>
-      </div>
-      <div class="lt" id="lt">
-        <div class="lt-bar">
-          <strong>청중 화면 재현<span class="d-tag">예시</span></strong>
-          <div class="lt-ctl">
-            <div class="d-lang" role="group" aria-label="보기 방식">
-              <button type="button" data-mode="live">실시간</button>
-              <button type="button" data-mode="rec">발표 후 기록</button>
-            </div>
-            <div class="d-lang" role="group" aria-label="청중 언어">
-              <button type="button" data-l="en" lang="en">English</button>
-              <button type="button" data-l="ja" lang="ja">日本語</button>
-              <button type="button" data-l="zh" lang="zh-CN">中文</button>
-            </div>
-            <button type="button" class="lt-play" id="lt-play">발표 재생</button>
-          </div>
-        </div>
-        <div class="lt-body" id="lt-body">
-          <div class="lt-spk"><p class="lt-cap"><i class="lt-dot" aria-hidden="true"></i>발표자 · 한국어</p><div class="lt-lines" id="lt-src"></div></div>
-          <div class="lt-aud"><p class="lt-cap" id="lt-who"></p><div class="lt-lines" id="lt-out" aria-live="polite"></div></div>
-        </div>
-        <ol class="lt-rec" id="lt-rec" hidden></ol>
-        <div class="d-foot">흐름을 보여주기 위한 재현 화면입니다. 예시 문장이며, 실제 서비스 화면이나 DeepL 번역 결과가 아닙니다.</div>
-      </div>
-    </div>
-
-    <div class="block two">
-      <h3 class="sub-h">What it does</h3>
-      <ul class="list">
-        <li><b>실시간 번역 자막</b><span>발표자가 말하는 내용을 DeepL 엔진으로 번역해 청중 화면에 바로 보여줍니다.</span></li>
-        <li><b>번역 음성</b><span>자막과 함께, 번역된 내용을 음성으로도 들을 수 있습니다.</span></li>
-        <li><b>접속자마다 다른 언어</b><span>같은 링크로 들어온 청중이 각자 자기 언어로 발표를 따라갑니다.</span></li>
-        <li><b>발표 후 다시 보기</b><span>발표가 끝난 뒤에 접속해도 발표자가 어떤 내용을 말했는지 확인할 수 있습니다.</span></li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════ MNSG ═══════════ -->
-<section class="project mnsg" id="mnsg" aria-labelledby="p0">
-  <div class="wrap">
-    <div class="p-head">
-      <h2 class="sec-h" id="p0">MNSG<span class="ko">크리에이터 비즈니스 그룹 기업 사이트</span></h2>
-      <p>인플루언서 발굴, 콘텐츠 제작, 마케팅, 커머스, 사업 인큐베이션을 하는 회사의 공식 사이트입니다. 다섯 개 사업 영역과 소속 크리에이터, 디렉터, 협업 절차를 한 페이지 안에서 차례로 보여주고 문의 폼으로 마무리합니다.</p>
-      <a class="visit" href="https://mnsgstudio.com/" target="_blank" rel="noopener">사이트 방문하기 <small>mnsgstudio.com</small></a>
-    </div>
-    <dl class="facts">
-      <div><dt>사이트</dt><dd><a href="https://mnsgstudio.com/" target="_blank" rel="noopener">mnsgstudio.com</a><br>운영 중</dd></div>
-      <div><dt>사용 기술</dt><dd>React, Vite, Tailwind CSS<br>Cloudflare</dd></div>
-      <div><dt>구성</dt><dd>9개 섹션 싱글 페이지<br>영상 배경</dd></div>
-      <div><dt>주요 기능</dt><dd>사업 영역 탭,<br>유형별 문의 폼</dd></div>
-    </dl>
-
-    <div class="mnsg-stage">
-      <figure><button class="shot hero-crop" data-full="img/mnsg_hero.webp"><img src="img/mnsg_hero.webp" alt="MNSG 메인 화면 카피" loading="lazy"></button><figcaption>메인 카피와 시작하기 버튼</figcaption></figure>
-      <figure><button class="shot wd" data-full="img/mnsg_intro.webp"><img src="img/mnsg_intro.webp" alt="MNSG 브랜드 메시지 섹션" loading="lazy"></button><figcaption>회사의 지향점을 큰 타이포로 보여주는 섹션</figcaption></figure>
-    </div>
-    <div class="gallery">
-      <figure><button class="shot wd" data-full="img/mnsg_about.webp"><img src="img/mnsg_about.webp" alt="About 섹션" loading="lazy"></button><figcaption>회사 소개와 다섯 가지 사업 카드</figcaption></figure>
-      <figure><button class="shot wd" data-full="img/mnsg_business.webp"><img src="img/mnsg_business.webp" alt="사업 영역 섹션" loading="lazy"></button><figcaption>탭을 누르면 사업 영역별 설명과 사례가 바뀝니다</figcaption></figure>
-      <figure><button class="shot wd" data-full="img/mnsg_workflow.webp"><img src="img/mnsg_workflow.webp" alt="협업 절차 섹션" loading="lazy"></button><figcaption>다섯 단계 협업 절차 타임라인</figcaption></figure>
-      <figure><button class="shot wd" data-full="img/mnsg_contact.webp"><img src="img/mnsg_contact.webp" alt="문의 섹션" loading="lazy"></button><figcaption>회사 연락처와 문의 접수 폼</figcaption></figure>
-    </div>
-
-    <div class="block two">
-      <h3 class="sub-h">How it's built</h3>
-      <ul class="list">
-        <li><b>컴포넌트 단위 싱글 페이지</b><span>React로 섹션을 컴포넌트로 나누고, 상단 고정 메뉴에서 각 섹션으로 바로 이동합니다.</span></li>
-        <li><b>Vite 빌드와 캐시</b><span>빌드 결과물 파일명에 해시가 붙어, 배포할 때마다 바뀐 파일만 새로 받습니다.</span></li>
-        <li><b>상태로 바뀌는 사업 소개</b><span>다섯 개 사업 영역 탭을 누르면 설명, 핵심 업무, 사례 카드가 함께 바뀝니다.</span></li>
-        <li><b>문의 유형별 폼</b><span>크리에이터, 브랜드 협업, 커머스, 사업 컨설팅 중 유형을 고르고 필수 항목을 확인해 접수합니다.</span></li>
-        <li><b>Tailwind 반응형</b><span>유틸리티 클래스의 <code>md:</code> 구간으로 여백과 그리드를 화면 크기에 맞춰 바꿉니다.</span></li>
-        <li><b>영상 배경</b><span>배경 영상 위에 반투명 섹션을 겹쳐 스크롤 내내 브랜드 분위기가 이어지게 했습니다.</span></li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════ DARUON ═══════════ -->
-<section class="project dar" id="daruon" aria-labelledby="p2">
-  <div class="wrap">
-    <div class="p-head">
-      <h2 class="sec-h" id="p2">Daruon<span class="ko">다루온 기업 사이트</span></h2>
-      <p>AI 전환, 시스템 통합, 소프트웨어 개발, 커머스와 미디어 사업을 하는 회사의 원페이지 소개 사이트입니다. 여러 갈래의 사업을 한 번의 스크롤로 이해할 수 있게 흐름을 짰습니다.</p>
-      <a class="visit" href="https://daruon.co.kr/" target="_blank" rel="noopener">사이트 방문하기 <small>daruon.co.kr</small></a>
-    </div>
-    <dl class="facts">
-      <div><dt>사이트</dt><dd><a href="https://daruon.co.kr/" target="_blank" rel="noopener">daruon.co.kr</a><br>운영 중</dd></div>
-      <div><dt>사용 기술</dt><dd>HTML, CSS, Vanilla JS<br>Canvas, SVG</dd></div>
-      <div><dt>구성</dt><dd>HTML 파일 하나, 약 42KB<br>JS 라이브러리 없음</dd></div>
-      <div><dt>인터랙션</dt><dd>Canvas 배경,<br>스크롤 연동 애니메이션</dd></div>
-    </dl>
-
-    <div class="dar-stage">
-      <figure><button class="shot wd" data-full="img/daruon_hero.webp"><img src="img/daruon_hero.webp" alt="다루온 메인 화면" loading="lazy"></button><figcaption>메인 화면. 배경의 점과 선은 Canvas로 그립니다</figcaption></figure>
-      <figure><button class="shot ph" data-full="img/daruon_mobile.webp"><img src="img/daruon_mobile.webp" alt="다루온 모바일 화면" loading="lazy"></button><figcaption>모바일 화면</figcaption></figure>
-    </div>
-    <div class="gallery">
-      <figure><button class="shot" data-full="img/daruon_ax.webp"><img src="img/daruon_ax.webp" alt="서비스 소개 섹션" loading="lazy"></button><figcaption>탭으로 전환하는 서비스 소개</figcaption></figure>
-      <figure><button class="shot" data-full="img/daruon_impact.webp"><img src="img/daruon_impact.webp" alt="도입 효과 섹션" loading="lazy"></button><figcaption>화면에 들어오면 숫자가 올라가는 도입 효과 섹션</figcaption></figure>
-    </div>
-
-    <div class="block two">
-      <div>
-        <h3 class="sub-h">How it's built</h3>
-        <p class="note">외부 JS 라이브러리 없이 브라우저 기본 API만으로 인터랙션을 만들었습니다.</p>
-      </div>
-      <div>
-<pre class="code solo" tabindex="0"><span class="c">// 숫자 카운트업 — 화면에 60% 이상 보일 때 한 번만 실행</span>
-<span class="k">const</span> cio = <span class="k">new</span> IntersectionObserver(es =&gt; es.forEach(e =&gt; {
-  <span class="k">if</span> (!e.isIntersecting) <span class="k">return</span>;
-  cio.unobserve(e.target);
-  <span class="k">const</span> el = e.target, to = +el.dataset.to, t0 = performance.now();
-  (<span class="k">function</span> tick(t){
-    <span class="k">const</span> p = Math.min((t - t0) / 1400, 1);
-    el.textContent = Math.round(to * (1 - Math.pow(1 - p, 3)));   <span class="c">// ease-out cubic</span>
-    <span class="k">if</span> (p &lt; 1) requestAnimationFrame(tick);
-  })(t0);
-}), { threshold: .6 });</pre>
-        <ul class="list" style="margin-top:40px">
-          <li><b>IntersectionObserver</b><span>섹션 등장, 대시보드 목업 재생, 숫자 카운트업을 스크롤 이벤트 대신 관찰자로 처리합니다.</span></li>
-          <li><b>Canvas 파티클 배경</b><span>점들이 움직이며 가까워지면 선으로 이어지는 배경을 <code>requestAnimationFrame</code>으로 그립니다.</span></li>
-          <li><b>SVG 로고 3종</b><span>심볼, 워드마크, 전체 로고를 1.5–5KB의 SVG로 넣어 어떤 해상도에서도 선명합니다.</span></li>
-          <li><b>파일 하나로 배포</b><span>HTML, CSS, JS를 한 파일에 담아 요청 수를 줄이고 어디에나 쉽게 올릴 수 있게 했습니다.</span></li>
-        </ul>
-      </div>
-    </div>
   </div>
 </section>
 
 <!-- ═══════════ APPROACH ═══════════ -->
-<section class="approach">
-  <div class="wrap two">
-    <h2 class="sec-h" style="font-size:clamp(44px,6vw,96px)">How I<br>work</h2>
-    <div>
-      <ol class="steps">
-        <li><div><b>기획과 시안부터 읽습니다</b><span>화면 흐름과 데이터를 먼저 정리하고 빠진 부분을 질문합니다.</span></div></li>
-        <li><div><b>눌러볼 수 있는 링크를 일찍 드립니다</b><span>문서보다 실제 화면으로 방향을 맞추는 편이 빠릅니다.</span></div></li>
-        <li><div><b>피드백은 짧은 주기로 반영합니다</b><span>바뀐 내용은 문서로 남겨 현재 상태를 누구나 알 수 있게 합니다.</span></div></li>
-        <li><div><b>오픈 뒤에도 지켜봅니다</b><span>운영 데이터를 보며 문제가 생기면 바로 고칩니다.</span></div></li>
-      </ol>
-      <div class="stack">
-        <div><h5>Frontend</h5><ul><li>HTML, CSS</li><li>JavaScript</li><li>React, Vite</li><li>Tailwind CSS</li></ul></div>
-        <div><h5>Backend</h5><ul><li>Cloudflare Workers</li><li>D1 (SQLite)</li><li>REST API 설계</li><li>관리자 도구</li></ul></div>
-        <div><h5>Quality</h5><ul><li>반응형 레이아웃</li><li>다국어, RTL</li><li>키보드 접근성</li><li>Canvas, SVG</li></ul></div>
-        <div><h5>Delivery</h5><ul><li>GitHub 자동 배포</li><li>도메인 연결</li><li>캐시 설정</li><li>운영 중 핫픽스</li></ul></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="contact" id="contact">
+<section class="approach" aria-labelledby="ah">
   <div class="wrap">
-    <h2 class="sec-h" style="font-size:clamp(44px,6vw,96px)">Let's build<br>the next one.</h2>
-    <p>프로젝트 문의는 아래 메일로 연락 주세요.</p>
-    <ul class="reach" aria-label="연락처">
-      <li><span>Email</span><a href="mailto:haildrop99@gmail.com">haildrop99@gmail.com</a></li>
-    </ul>
-    <ul class="sites" aria-label="작업한 사이트">
-      <li><a href="https://mnsgstudio.com/" target="_blank" rel="noopener"><b>MNSG</b><span>mnsgstudio.com</span></a></li>
-      <li><a href="https://theglowsynrgy.org/" target="_blank" rel="noopener"><b>Shop Bingo Tour</b><span>theglowsynrgy.org</span></a></li>
-      <li><a href="https://daruon.co.kr/" target="_blank" rel="noopener"><b>Daruon</b><span>daruon.co.kr</span></a></li>
-      <li><div class="row"><b>Live Translation</b><span>비공개 링크</span></div></li>
-    </ul>
-    <a class="btn" href="https://github.com/haildrop99-cyber" target="_blank" rel="noopener">GitHub</a>
-    <footer><span>© 2026</span><span>프로젝트 이미지는 모두 실제 사이트 화면입니다.</span></footer>
+    <h2 class="x" id="ah">How I work</h2>
+    <ol class="steps">
+      <li><b>기획과 시안부터 읽습니다</b><span>화면 흐름과 데이터를 먼저 정리하고 빠진 부분을 질문합니다.</span></li>
+      <li><b>눌러볼 수 있는 링크를 일찍 드립니다</b><span>문서보다 실제 화면으로 방향을 맞추는 편이 빠릅니다.</span></li>
+      <li><b>피드백은 짧은 주기로 반영합니다</b><span>바뀐 내용은 문서로 남겨 현재 상태를 누구나 알 수 있게 합니다.</span></li>
+      <li><b>오픈 뒤에도 지켜봅니다</b><span>운영 데이터를 보며 문제가 생기면 바로 고칩니다.</span></li>
+    </ol>
   </div>
 </section>
 
+<section class="contact" id="contact" aria-labelledby="ch">
+  <div class="wrap">
+    <h2 class="x" id="ch">Get in touch.</h2>
+    <p class="lead">프로젝트 문의는 아래 메일로 연락 주세요.</p>
+    <div class="mail">
+      <a href="mailto:haildrop99@gmail.com">haildrop99@gmail.com</a>
+      <button type="button" class="copy" id="copy">메일 주소 복사</button>
+    </div>
+    <ul class="sites" aria-label="작업한 사이트">
+      <li><b>MNSG</b><a href="https://mnsgstudio.com/" target="_blank" rel="noopener">mnsgstudio.com</a></li>
+      <li><b>Daruon</b><a href="https://daruon.co.kr/" target="_blank" rel="noopener">daruon.co.kr</a></li>
+      <li><b>Shop Bingo Tour</b><a href="https://theglowsynrgy.org/" target="_blank" rel="noopener">theglowsynrgy.org</a></li>
+      <li><b>Live Translation</b><span>비공개 링크</span></li>
+    </ul>
+    <footer><span>© 2026 Web Portfolio</span><span>프로젝트 이미지는 모두 실제 사이트 화면입니다.</span></footer>
+  </div>
+</section>
+
+<div id="pv" aria-hidden="true"><img alt=""></div>
 <div id="lb" role="dialog" aria-label="이미지 크게 보기" tabindex="-1"><img alt=""></div>
 
 <script>
@@ -909,6 +984,24 @@ figcaption{font-size:14px;color:var(--sub);margin-top:14px}
     S.mode=b.getAttribute('data-mode'); if(S.mode==='rec'){ stop(); S.ns=S.nt=L.length; } render(); }); });
   root.querySelectorAll('[data-l]').forEach(function(b){ b.addEventListener('click',function(){ S.lang=b.getAttribute('data-l'); render(); }); });
   render();
+})();
+
+/* ── work list preview, copy mail ── */
+(function(){
+  var pv=document.getElementById('pv'), pi=pv.querySelector('img');
+  if(window.matchMedia&&matchMedia('(hover:hover) and (pointer:fine)').matches){
+    document.querySelectorAll('#rows a').forEach(function(r){
+      r.addEventListener('mouseenter',function(){ var s=r.getAttribute('data-img'); if(!s){ pv.classList.remove('on'); return; } pi.src=s; pv.classList.add('on'); });
+      r.addEventListener('mouseleave',function(){ pv.classList.remove('on'); });
+      r.addEventListener('mousemove',function(e){ var x=Math.min(e.clientX+28,innerWidth-340), y=Math.max(e.clientY-110,12); pv.style.transform='translate3d('+x+'px,'+y+'px,0)'; });
+    });
+  }
+  var c=document.getElementById('copy'), label=c.textContent, t;
+  c.addEventListener('click',function(){
+    function done(msg){ c.textContent=msg; clearTimeout(t); t=setTimeout(function(){ c.textContent=label; },2200); }
+    try{ navigator.clipboard.writeText('haildrop99@gmail.com').then(function(){ done('복사했습니다'); },function(){ done('복사하지 못했습니다. 주소를 직접 선택해 주세요'); }); }
+    catch(e){ done('복사하지 못했습니다. 주소를 직접 선택해 주세요'); }
+  });
 })();
 </script>
 </body>
